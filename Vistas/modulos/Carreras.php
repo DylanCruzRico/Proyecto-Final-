@@ -48,28 +48,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        
-                        <td>1</td>
-                        <td>Ing info</td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="">
-                                    <button class="btn btn-success">Editar</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-danger">Borrar</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-warning">Materias</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-primary">Estudiantes</button>
-                                </a>
-                            </div>
-                        </td>
 
-                    </tr>
+
+                    <?php 
+                        $resultado = CarrerasC::VerCarrerasC();
+
+                        foreach($resultado as $key => $value)
+                        echo '
+                            <tr>
+                            
+                            <td>'.$value["id"].'</td>
+                            <td>'.$value["nombre"].'</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="Editar-Carrera/'.$value["id"].'">
+                                        <button class="btn btn-success">Editar</button>
+                                    </a>
+                                    <a href="">
+                                        <button class="btn btn-danger">Borrar</button>
+                                    </a>
+                                    <a href="">
+                                        <button class="btn btn-warning">Materias</button>
+                                    </a>
+                                    <a href="">
+                                        <button class="btn btn-primary">Estudiantes</button>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                        ';
+
+                    ?>
                 </tbody>
             </table>
 
