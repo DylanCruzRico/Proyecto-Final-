@@ -1,7 +1,7 @@
 <?php 
 	class UsuariosC {
 
-		/* Inicio de sesion */
+		/* Inicio de sesión */
 		public function IniciarSesionC(){
 			if(isset($_POST["usuario"])){
 				if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuario"]) && preg_match('/^[a-zA-Z0-9.]+$/', $_POST["clave"])){
@@ -50,15 +50,15 @@
 			   <div class="col-md-6 col-xs-12"> 
 
 					<h2>Fecha de Nacimiento</h2>
-					<input type="text" name="fechanac" class="input-lg" value="">
+					<input type="hidden" name="fechanac" class="input-lg" value="'.$resultado["fechanac"].'">
 					
-					<input type="hidden" name="id" value="">
+					<input type="text" name="id" value="'.$_SESSION["id"].'">
 					
 					<h2>Dirección</h2>
-					<input type="text" name="direccion" class="input-lg" value="">
+					<input type="text" name="direccion" class="input-lg" value="'.$resultado["direccion"].'">
 
 					<h2>Telefono</h2>
-					<input type="text" name="telefono" class="input-lg" value="">
+					<input type="text" name="telefono" class="input-lg" value="'.$resultado["telefono"].'">
 				   
 
 			   </div> 
@@ -66,13 +66,13 @@
 			   <div class="col-md-6 col-xs-12"> 
 
 					<h2>Correo</h2>
-					<input type="email" name="correo" class="input-lg" value="">
+					<input type="email" name="correo" class="input-lg" value="'.$resultado["correo"].'">
 					
 					<h2>Universidad</h2>
-					<input type="text" name="universidad" class="input-lg" value="">
+					<input type="text" name="universidad" class="input-lg" value="'.$resultado["universidad"].'">
 
 					<h2>Contraseña</h2>
-					<input type="text" name="clave" class="input-lg" value="">
+					<input type="text" name="clave" class="input-lg" value="'.$resultado["clave"].'">
 					
 					<br>
 					<br>

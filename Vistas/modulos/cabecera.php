@@ -37,7 +37,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="http://localhost/universidad/mis-datos" class="btn btn-primary btn-flat">Mi Perfil</a>
+                  <a href="http://localhost/universidad/mis-datos" class="btn btn-primary btn-flat">Mi datos</a>
                 </div>
                 <div class="pull-right">
                   <a href="http://localhost/universidad/salir" class="btn btn-danger btn-flat">Salir</a>
