@@ -4,6 +4,13 @@
             <?php 
                 $datos = new UsuariosC();
                 $datos -> VerMisDatosC();
+                
+            ?>
+
+            <?php 
+                $guardar = new UsuariosC();
+                $guardar -> GuardarDatosC();
+
             ?>
         </div>
 

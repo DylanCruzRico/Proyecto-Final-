@@ -30,5 +30,28 @@ class UsuariosM extends ConexionBD {
 
         return $resultado;
 	}
+    
+    /*Guardar datos */
+    static public function GuardarDatosM($tablaBD, $datosC){
+        $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET fechanac = :fechanac, direccion = :direccion, telefono = :telefono, 
+        correo = :correo, universidad = :universidad, clave = :clave WHERE id = :id");
+
+        $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+        $pdo->bindParam(":fechanac", $datosC["fechanac"], PDO::PARAM_STR);
+        $pdo->bindParam(":direccion", $datosC["direccion"], PDO::PARAM_STR);
+        $pdo->bindParam(":telefono", $datosC["telefono"], PDO::PARAM_STR);
+        $pdo->bindParam(":correo", $datosC["correo"], PDO::PARAM_STR);
+        $pdo->bindParam(":universidad", $datosC["universidad"], PDO::PARAM_STR);
+        $pdo->bindParam(":clave", $datosC["clave"], PDO::PARAM_STR);
+
+        if($pdo -> execute()){
+            return true;
+        }
+
+        $pdo->closeCursor();
+        $pdo = null;
+        
+        
+    }
 }
 ?>

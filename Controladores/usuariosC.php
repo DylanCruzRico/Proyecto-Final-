@@ -52,7 +52,7 @@
 					<h2>Fecha de Nacimiento</h2>
 					<input type="hidden" name="fechanac" class="input-lg" value="'.$resultado["fechanac"].'">
 					
-					<input type="text" name="id" value="'.$_SESSION["id"].'">
+					<input type="text" name="Uid" value="'.$_SESSION["id"].'">
 					
 					<h2>Dirección</h2>
 					<input type="text" name="direccion" class="input-lg" value="'.$resultado["direccion"].'">
@@ -86,6 +86,24 @@
 			</div>
 
 		</form>';
+		}
+
+		/* Actualizar mis datos */
+		public function GuardarDatosC(){
+			if(isset($_POST["Uid"])){
+				$tablaBD = "usuarios";
+
+				$datosC = array("id" => $_POST["Uid"], "fechanac" => $_POST["fechanac"], "direccion" => $_POST["direccion"], "telefono" => $_POST["telefono"],
+								"correo" => $_POST["correo"], "universidad" => $_POST["universidad"], "clave" => $_POST["clave"]);
+
+				$resultado = UsuariosM::GuardarDatosM($tablaBD, $datosC);
+
+				if($resultado == true){
+					echo '<script> 
+							window.location = "http://localhost/universidad/mis-datos";
+						</script>';
+				}
+			}
 		}
 
 	}
