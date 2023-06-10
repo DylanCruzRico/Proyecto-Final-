@@ -27,6 +27,7 @@
                     <?php 
                         $editar = new CarrerasC();
                         $editar->EditarCarreraC();
+                        $editar-> ActualizarCarrerasC();
                         
                     ?>
 

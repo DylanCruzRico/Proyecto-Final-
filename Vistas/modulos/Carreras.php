@@ -64,7 +64,7 @@
                                     <a href="Editar-Carrera/'.$value["id"].'">
                                         <button class="btn btn-success">Editar</button>
                                     </a>
-                                    <a href="">
+                                    <a href="Carreras/'.$value["id"].'">
                                         <button class="btn btn-danger">Borrar</button>
                                     </a>
                                     <a href="">
@@ -90,3 +90,9 @@
    </section>
 
 </div>
+
+<?php 
+
+    $borrarCarrera = new CarrerasC();
+    $borrarCarrera -> BorrarCarrerasC();
+?>
