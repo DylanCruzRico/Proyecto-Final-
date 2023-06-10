@@ -2,78 +2,92 @@
 
 require_once "ConexionBD.php";
 
-class CarrerasM extends ConexionBD{
+    class CarrerasM extends ConexionBD{
 
-	//Crear Carrera
-	static public function CrearCarreraM($tablaBD, $carrera){
+        //Crear Carrera
+        static public function CrearCarreraM($tablaBD, $carrera){
 
-		$pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD (nombre) VALUES (:nombre)");
+            $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD (nombre) VALUES (:nombre)");
 
-		$pdo -> bindParam(":nombre", $carrera, PDO::PARAM_STR);
+            $pdo -> bindParam(":nombre", $carrera, PDO::PARAM_STR);
 
-		if($pdo -> execute()){
+            if($pdo -> execute()){
 
-			return true;
+                return true;
 
-		}
+            }
 
-		$pdo -> close();
-		$pdo = null;
+            $pdo -> close();
+            $pdo = null;
 
-	}
-
-
-
-	//Ver Carreras
-	static public function VerCarrerasM($tablaBD){
-
-		$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD");
-
-		$pdo -> execute();
-
-		return $pdo -> fetchAll();
-
-		$pdo -> close();
-		$pdo = null;  
-
-	}
+        }
 
 
 
-	//Editar Carreras
-	static public function EditarCarreraM($tablaBD, $id){
+        //Ver Carreras
+        static public function VerCarrerasM($tablaBD){
 
-		$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD");
 
-		$pdo -> bindParam(":id", $id, PDO::PARAM_INT);
+            $pdo -> execute();
 
-		$pdo -> execute();
+            return $pdo -> fetchAll();
 
-		return $pdo -> fetch();
+            $pdo -> close();
+            $pdo = null;  
 
-		$pdo -> close();
-		$pdo = null;
-
-	}
+        }
 
 
 
-	//Actualizar Carreras
-	static public function ActualizarCarrerasM($tablaBD, $datosC){
+        //Editar Carreras
+        static public function EditarCarreraM($tablaBD, $id){
 
-		$pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET nombre = :nombre WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE id = :id");
 
-		$pdo -> bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-		$pdo -> bindParam(":nombre", $datosC["carrera"], PDO::PARAM_STR);
+            $pdo -> bindParam(":id", $id, PDO::PARAM_INT);
 
-		if($pdo -> execute()){
-			return true;
-		}
+            $pdo -> execute();
 
-		$pdo -> close();
-		$pdo = null;
+            return $pdo -> fetch();
 
-	}
+            $pdo -> close();
+            $pdo = null;
+
+        }
+
+
+
+        //Actualizar Carreras
+        static public function ActualizarCarrerasM($tablaBD, $datosC){
+
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET nombre = :nombre WHERE id = :id");
+
+            $pdo -> bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo -> bindParam(":nombre", $datosC["carrera"], PDO::PARAM_STR);
+
+            if($pdo -> execute()){
+                return true;
+            }
+
+            $pdo -> close();
+            $pdo = null;
+
+        }
+
+        //Borrar Carreras
+
+        static function BorrarCarrerasM($tablaBD, $id){
+            $pdo = ConexionBD::cBD()->prepare("DELETE FROM $tablaBD WHERE id = :id"); 
+            $pdo -> bindParam(":id", $id, PDO::PARAM_INT);
+
+            if($pdo -> execute()){
+                return true;
+            }
+
+            $pdo -> close();
+            $pdo = null;
+        }
 
     }
 ?>

@@ -90,3 +90,9 @@
    </section>
 
 </div>
+
+<?php 
+
+    $borrarCarrera = new CarrerasC();
+    $borrarCarrera -> BorrarCarrerasC();
+?>
