@@ -57,7 +57,7 @@
         if(isset($_GET["url"])){
             $url = explode("/", $_GET["url"]); #Separamos en cadena de texto lo que viene en la variable GET
             
-            if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "mis-datos" || $url[0] == "Carreras"){
+            if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "mis-datos" || $url[0] == "Carreras" || $url[0] == "Editar-Carrera"){
                 include "modulos/".$url[0].".php";
             }
         }
