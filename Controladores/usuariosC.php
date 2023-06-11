@@ -106,5 +106,39 @@
 			}
 		}
 
+
+
+
+		//Crear usuario
+		public function CrearUsuarioC(){
+			if(isset($_POST["apellidoU"])){
+
+				$tablaBD = "usuarios";
+
+				$datosC = array("apellido" => $_POST["apellidoU"], "nombre" => $_POST["nombreU"], "usuario" => $_POST["usuarioU"], "clave" => $_POST["claveU"], 
+								"id_carrera" => $_POST["carreraU"], "rol" => $_POST["rolU"]);
+
+				$resultado = UsuariosM::CrearUsuarioC($tablaBD, $datosC);
+
+				if($resultado == true){
+					echo '
+					<script> 
+						window.location = "usuarios";
+					</script>
+					';
+				}
+
+			}
+		}
+		
+		
+		//Ver usuarios
+		static	public function VerUsuariosC($columna, $valor){
+			$tablaBD = "usuarios";
+			$resultado = UsuariosM::VerUsuariosM($tablaBD, $columna, $valor);
+
+			return $resultado;
+
+		}
 	}
 ?>

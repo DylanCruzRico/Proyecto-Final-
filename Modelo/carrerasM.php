@@ -89,5 +89,14 @@ require_once "ConexionBD.php";
             $pdo = null;
         }
 
+        static public function CarreraM($tablaBD, $columna, $valor){
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+
+            $pdo->bindParam(":". $columna, $valor, PDO::PARAM_STR);
+
+            $pdo -> execute();
+
+            return $pdo -> fetch();
+        }
     }
 ?>

@@ -53,5 +53,55 @@ class UsuariosM extends ConexionBD {
         
         
     }
+
+
+
+
+    //Crear usuario
+
+    static public function CrearUsuarioC($tablaBD, $datosC){
+        $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD (usuario, clave, apellido, nombre, id_carrera, rol)
+                                        VALUES(:usuario, :clave, :apellido, :nombre, :id_carrera, :rol)");
+
+        $pdo->bindParam(":usuario", $datosC["usuario"], PDO::PARAM_STR);
+        $pdo->bindParam(":clave", $datosC["clave"], PDO::PARAM_STR);
+        $pdo->bindParam(":apellido", $datosC["apellido"], PDO::PARAM_STR);
+        $pdo->bindParam(":nombre", $datosC["nombre"], PDO::PARAM_STR);
+        $pdo->bindParam(":id_carrera", $datosC["id_carrera"], PDO::PARAM_INT);
+        $pdo->bindParam(":rol", $datosC["rol"], PDO::PARAM_STR);
+
+
+        if($pdo -> execute()){
+            return true;
+        }
+        
+        $pdo->closeCursor();
+        $pdo = null;
+    }
+
+
+    //Ver usuario
+    static public function VerUsuariosM($tablaBD, $columna, $valor){
+        if($columna != null){
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+
+            $pdo->bindParam(":". $columna, $valor, PDO::PARAM_STR);
+
+            $pdo -> execute();
+
+            return $pdo -> fetch();
+        }
+        else{
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD");
+
+
+            $pdo -> execute();
+
+            return $pdo -> fetchAll();
+        }
+
+        $pdo->closeCursor();
+        $pdo = null;
+    }
 }
 ?>

@@ -113,5 +113,14 @@
             }
         }
 
+
+        static public function CarreraC($columna, $valor){
+            $tablaBD = "carreras";
+
+            $resultado = CarrerasM::CarreraM($tablaBD, $columna, $valor);
+
+            return $resultado;
+
+        }
     }
 ?>

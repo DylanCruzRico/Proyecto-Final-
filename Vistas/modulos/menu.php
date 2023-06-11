@@ -12,7 +12,7 @@
 
     <ul class="sidebar-menu">
       <li>
-        <a href="http://localhost/universidad/">
+        <a href="http://localhost/universidad/usuarios">
           <i class="fa fa-home"></i>
           <span>Usuario</span>
         </a>
