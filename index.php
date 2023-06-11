@@ -7,6 +7,10 @@
 
     require_once 'Controladores/carrerasC.php';
     require_once "Modelo/carrerasM.php";
+    
+    require_once 'Controladores/AjustesC.php';
+    require_once "Modelo/AjustesM.php";
+
 
     $plantilla = new Plantilla();
     $plantilla -> LlamarPlantilla();
